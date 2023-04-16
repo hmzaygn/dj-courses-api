@@ -15,7 +15,7 @@ class Students(models.Model):
     first_name = models.CharField(max_length=25)
     last_name = models.CharField(max_length=25)
     dob = models.DateField(blank=True, null=True)
-    courses = models.ManyToManyField(Courses, related_name="students")
+    courses = models.ManyToManyField(Courses)
 
     class Meta:
         verbose_name = "Student"
