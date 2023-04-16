@@ -14,8 +14,8 @@ class Courses(models.Model):
 class Students(models.Model):
     first_name = models.CharField(max_length=25)
     last_name = models.CharField(max_length=25)
-    dob = models.DateField()
-    courses = models.ForeignKey(Courses, on_delete=models.SET_NULL, null=True)
+    dob = models.DateField(blank=True, null=True)
+    courses = models.ManyToManyField(Courses, related_name="students")
 
     class Meta:
         verbose_name = "Student"
