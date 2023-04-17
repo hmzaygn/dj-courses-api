@@ -20,6 +20,10 @@ class StudentsListView(ListAPIView):
     serializer_class = StudentsListSerializer
     # permission_classes = [IsAuthenticated, IsAdminUser]
 
-class StudentsMVS(viewsets.ModelViewSet):
+class StudentCreateView(CreateAPIView):
+    queryset = Students.objects.all()
+    serializer_class = StudentsSerializer
+
+class StudentsUpdDestView(RetrieveUpdateDestroyAPIView):
     queryset = Students.objects.all()
     serializer_class = StudentsSerializer
