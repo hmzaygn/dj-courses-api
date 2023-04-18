@@ -15,14 +15,14 @@ class Students(models.Model):
     first_name = models.CharField(max_length=25)
     last_name = models.CharField(max_length=25)
     dob = models.DateField(blank=True, null=True)
-    courses = models.ManyToManyField(Courses)
+    courses = models.ManyToManyField(Courses, related_name="students")
 
     class Meta:
         verbose_name = "Student"
         verbose_name_plural = "Students"
 
     def __str__(self):
-        return f"{self.first_name} - {self.last_name}"
+        return f"{self.id} - {self.first_name} {self.last_name}"
 
 
 

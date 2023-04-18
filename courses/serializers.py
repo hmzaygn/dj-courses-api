@@ -5,11 +5,14 @@ from .models import Courses, Students
 
 class CoursesSerializer(serializers.ModelSerializer):
 
+    students = serializers.StringRelatedField(many=True, read_only=True)
+
     class Meta:
         model = Courses
         fields = (
             "id",
             "course_name",
+            "students",
         )
 
 class StudentsListSerializer(serializers.ModelSerializer):
