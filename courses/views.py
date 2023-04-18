@@ -8,22 +8,24 @@ from .serializers import (
     StudentsListSerializer,
     StudentsSerializer
     )
+from .permissions import IsStaffOrReadOnly
 
 class CoursesMVS(viewsets.ModelViewSet):
     queryset = Courses.objects.all()
     serializer_class = CoursesSerializer
-    permission_classes = [IsAuthenticated, IsAdminUser]
-
+    permission_classes = [IsAuthenticated, IsStaffOrReadOnly]
 
 class StudentsListView(ListAPIView):
     queryset = Students.objects.all()
     serializer_class = StudentsListSerializer
-    # permission_classes = [IsAuthenticated, IsAdminUser]
+    permission_classes = [IsAuthenticated]
 
 class StudentCreateView(CreateAPIView):
     queryset = Students.objects.all()
     serializer_class = StudentsSerializer
+    permission_classes = [IsAuthenticated, IsAdminUser]
 
 class StudentsUpdDestView(RetrieveUpdateDestroyAPIView):
     queryset = Students.objects.all()
     serializer_class = StudentsSerializer
+    permission_classes = [IsAuthenticated, IsStaffOrReadOnly]
