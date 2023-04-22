@@ -1,4 +1,5 @@
 from django.db import models
+from django.contrib.auth.models import User
 
 class Courses(models.Model):
     id = models.CharField(max_length=6, unique=True, primary_key=True)
@@ -12,10 +13,11 @@ class Courses(models.Model):
         return f"{self.id} - {self.course_name}"
 
 class Students(models.Model):
+    user = models.OneToOneField(User, on_delete=models.CASCADE, null=True, blank=True)
     first_name = models.CharField(max_length=25)
     last_name = models.CharField(max_length=25)
     dob = models.DateField(blank=True, null=True)
-    courses = models.ManyToManyField(Courses, related_name="students")
+    courses = models.ManyToManyField(Courses, related_name="students", blank=True)
 
     class Meta:
         verbose_name = "Student"

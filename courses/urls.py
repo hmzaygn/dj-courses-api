@@ -5,7 +5,7 @@ from .views import (
     CoursesMVS,
     StudentsListView,
     StudentCreateView,
-    StudentsUpdDestView
+    StudentsDetailView
 )
 router = DefaultRouter()
 router.register("courses", CoursesMVS)
@@ -14,5 +14,5 @@ router.register("courses", CoursesMVS)
 urlpatterns = [
     path("students-list/", StudentsListView.as_view()),
     path("student-create/", StudentCreateView.as_view()),
-    path("student-detail/<int:pk>/", StudentsUpdDestView.as_view()),
+    path("student-detail/<int:pk>/", StudentsDetailView.as_view()),
 ] + router.urls
