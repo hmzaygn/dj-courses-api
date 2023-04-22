@@ -12,6 +12,7 @@ class CourseStudentSerializer(serializers.ModelSerializer):
         model = Courses
         fields = (
             "id",
+            "course_id",
             "course_name",
             "students",
         )
@@ -23,6 +24,7 @@ class CoursesSerializer(serializers.ModelSerializer):
         model = Courses
         fields = (
             "id",
+            "course_id",
             "course_name",
         )
 
@@ -49,7 +51,7 @@ class StudentsListSerializer(serializers.ModelSerializer):
 class StudentsSerializer(serializers.ModelSerializer):
 
     user = serializers.StringRelatedField()
-    user_id = serializers.IntegerField()
+    user_id = serializers.IntegerField(read_only=True)
 
     class Meta:
         model = Students

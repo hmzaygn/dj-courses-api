@@ -43,3 +43,6 @@ class StudentsDetailView(RetrieveUpdateDestroyAPIView):
             return super().get_queryset()
         else:
             return queryset.filter(user=self.request.user)
+
+    def perform_update(self, serializer):
+        serializer.save(user=self.request.user)

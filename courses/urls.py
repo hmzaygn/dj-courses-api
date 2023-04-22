@@ -8,11 +8,11 @@ from .views import (
     StudentsDetailView
 )
 router = DefaultRouter()
-router.register("courses", CoursesMVS)
+router.register("courses", CoursesMVS)  # for all CRUD operations related to Courses
 
 
 urlpatterns = [
-    path("students-list/", StudentsListView.as_view()),
-    path("student-create/", StudentCreateView.as_view()),
-    path("student-detail/<int:pk>/", StudentsDetailView.as_view()),
+    path("students-list/", StudentsListView.as_view()),  # for listing all students
+    path("student-create/", StudentCreateView.as_view()), # for creating a student
+    path("student-detail/<int:pk>/", StudentsDetailView.as_view()),  # for updating or deleting a student
 ] + router.urls
