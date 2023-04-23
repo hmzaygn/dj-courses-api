@@ -2,8 +2,8 @@
 
 An API for matching student and courses
 
-Documents :
+### Documents : 
 https://aygnhmz.pythonanywhere.com/redoc/
 
-Endpoints :
+### Endpoints :
 https://aygnhmz.pythonanywhere.com/swagger/
